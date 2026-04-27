@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdMint Studio — AI Ad Creative for DTC Brands</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:   #f5f0eb;
+  --warm:    #ede7df;
+  --paper:   #faf7f4;
+  --navy:    #0d1b2a;
+  --navy2:   #162636;
+  --teal:    #00c9a7;
+  --teal2:   #009e84;
+  --sand:    #e8ddd2;
+  --lemon:   #f0e6a2;
+  --lavender:#ddd5f0;
+  --blush:   #f5d5d0;
+  --ink:     #1a1208;
+  --body:    #4a3f35;
+  --muted:   #9c8f85;
+  --white:   #ffffff;
+  --border:  rgba(26,18,8,0.08);
+  --card-shadow: 0 4px 24px rgba(26,18,8,0.08), 0 1px 4px rgba(26,18,8,0.04);
+  --card-shadow-hover: 0 12px 48px rgba(26,18,8,0.14), 0 2px 8px rgba(26,18,8,0.06);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--body);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 56px;
+  background: rgba(250,247,244,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+}
+
+.nav-mark {
+  width: 36px; height: 36px;
+  background: var(--navy);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.nav-name {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.4px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+.nav-cta {
+  background: var(--navy) !important;
+  color: var(--teal) !important;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--navy2) !important; color: #fff !important; }
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  padding: 140px 56px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,201,167,0.12) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,27,42,0.06) 0%, transparent 70%);
+  bottom: -60px; left: 200px;
+  pointer-events: none;
+}
+
+.hero-left { position: relative; z-index: 1; }
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--navy);
+  color: var(--teal);
+  border-radius: 100px;
+  padding: 7px 16px 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-pill-dot {
+  width: 20px; height: 20px;
+  background: var(--teal);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(48px, 5.5vw, 76px);
+  color: var(--ink);
+  line-height: 1.0;
+  letter-spacing: -2.5px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal2);
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--body);
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: 40px;
+  font-weight: 400;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.btn-dark {
+  background: var(--navy);
+  color: var(--white);
+  padding: 15px 32px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(13,27,42,0.2);
+}
+
+.btn-dark:hover {
+  background: var(--navy2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(13,27,42,0.28);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1.5px solid var(--sand);
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.hero-right {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 26px 30px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.hero-card.accent-navy { background: var(--navy); }
+.hero-card.accent-lemon { background: var(--lemon); border-color: rgba(26,18,8,0.06); }
+.hero-card.accent-lav { background: var(--lavender); border-color: rgba(26,18,8,0.06); }
+
+.hc-icon {
+  width: 50px; height: 50px;
+  border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.hc-icon.bg-teal { background: rgba(0,201,167,0.15); }
+.hc-icon.bg-navy { background: rgba(255,255,255,0.1); }
+.hc-icon.bg-warm { background: rgba(26,18,8,0.08); }
+
+.hc-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.accent-navy .hc-label { color: var(--teal); }
+.accent-lemon .hc-label, .accent-lav .hc-label { color: var(--body); }
+.hero-card:not([class*="accent"]) .hc-label { color: var(--muted); }
+
+.hc-val {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.accent-navy .hc-val { color: var(--white); }
+.accent-lemon .hc-val, .accent-lav .hc-val { color: var(--ink); }
+.hero-card:not([class*="accent"]) .hc-val { color: var(--ink); }
+
+.hc-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.accent-navy .hc-sub { color: rgba(255,255,255,0.45); }
+.accent-lemon .hc-sub, .accent-lav .hc-sub { color: rgba(26,18,8,0.45); }
+
+/* ---- SECTION BASE ---- */
+section { padding: 96px 56px; }
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--teal2);
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(32px, 4vw, 50px);
+  color: var(--ink);
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--body);
+  max-width: 480px;
+  margin-bottom: 56px;
+  line-height: 1.7;
+}
+
+/* ---- HOW IT WORKS ---- */
+.how-section {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.step-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 28px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.step-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.step-num {
+  width: 36px; height: 36px;
+  background: var(--navy);
+  color: var(--teal);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.step-card h3 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.65;
+}
+
+/* ---- OFFER ---- */
+.offer-section { background: var(--cream); }
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.offer-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.2s;
+}
+
+.offer-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.offer-card.dark {
+  background: var(--navy);
+  border-color: transparent;
+}
+
+.offer-icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.dark .offer-icon-wrap { background: rgba(0,201,167,0.12); }
+
+.offer-card h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.dark h3 { color: var(--white); }
+
+.offer-card p {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.7;
+}
+
+.dark p { color: rgba(255,255,255,0.5); }
+
+/* ---- SAMPLE WORK ---- */
+.concepts-section { background: var(--white); }
+
+.phone-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.phone-row::-webkit-scrollbar { display: none; }
+
+.phone-card {
+  flex-shrink: 0;
+  width: 220px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: all 0.2s;
+}
+
+.phone-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-5px);
+}
+
+.phone-screen {
+  width: 100%;
+  aspect-ratio: 9/15;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px 16px;
+}
+
+.ps-1 { background: linear-gradient(160deg, #e8f4f0 0%, #c2ede5 50%, #a8e0d6 100%); }
+.ps-2 { background: linear-gradient(160deg, #f0ece8 0%, #e8ddd2 50%, #d4c5b6 100%); }
+.ps-3 { background: linear-gradient(160deg, #eef0e8 0%, #dde5cc 50%, #c8d8b0 100%); }
+.ps-4 { background: linear-gradient(160deg, #e8ecf4 0%, #d2daea 50%, #b8c4e0 100%); }
+
+.phone-shape {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.ps-1 .phone-shape { width:160px;height:160px;background:rgba(0,201,167,0.22);bottom:-40px;right:-30px; }
+.ps-2 .phone-shape { width:140px;height:140px;background:rgba(13,27,42,0.1);bottom:-30px;left:-20px; }
+.ps-3 .phone-shape { width:150px;height:150px;background:rgba(70,130,50,0.15);bottom:-35px;right:-25px; }
+.ps-4 .phone-shape { width:130px;height:130px;background:rgba(26,80,200,0.12);bottom:-25px;right:-15px; }
+
+.phone-emoji {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+}
+
+.phone-content { position: relative; z-index: 1; }
+
+.phone-hook {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.phone-cta {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 7px;
+}
+
+.phone-format-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--white);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 4px 9px;
+  border: 1px solid var(--border);
+  z-index: 2;
+}
+
+.phone-footer {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.phone-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.phone-cat {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+.insta-actions {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---- PRICING ---- */
+.pricing-section { background: var(--cream); }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 820px;
+}
+
+.price-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 44px 40px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.2s;
+}
+
+.price-card.dark {
+  background: var(--navy);
+  border-color: transparent;
+}
+
+.price-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.price-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.dark .price-eyebrow { color: var(--teal); }
+
+.price-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 56px;
+  color: var(--ink);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.dark .price-num { color: var(--white); }
+
+.price-period {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.dark .price-period { color: rgba(255,255,255,0.35); }
+
+.price-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 24px;
+}
+
+.dark .price-divider { background: rgba(255,255,255,0.08); }
+
+.price-list {
+  list-style: none;
+  margin-bottom: 36px;
+}
+
+.price-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--body);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+.dark .price-list li {
+  color: rgba(255,255,255,0.6);
+  border-bottom-color: rgba(255,255,255,0.07);
+}
+
+.price-list li:last-child { border-bottom: none; }
+
+.check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(0,201,167,0.1);
+  border: 1px solid rgba(0,201,167,0.3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 10px;
+  color: var(--teal2);
+}
+
+.btn-price-dark {
+  display: block;
+  text-align: center;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 10px;
+  padding: 15px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(13,27,42,0.15);
+}
+
+.btn-price-dark:hover {
+  background: var(--navy2);
+  box-shadow: 0 8px 28px rgba(13,27,42,0.22);
+}
+
+.btn-price-teal {
+  display: block;
+  text-align: center;
+  background: var(--teal);
+  color: var(--navy);
+  border-radius: 10px;
+  padding: 15px;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(0,201,167,0.3);
+}
+
+.btn-price-teal:hover {
+  background: #00deba;
+  box-shadow: 0 8px 32px rgba(0,201,167,0.4);
+}
+
+/* ---- STACK ---- */
+.stack-section {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.stack-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stack-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 24px;
+  transition: all 0.2s;
+}
+
+.stack-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+
+.stack-cat {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--teal2);
+  margin-bottom: 16px;
+}
+
+.stack-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stack-item:last-child { border-bottom: none; }
+
+.stack-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+
+/* ---- CONTACT ---- */
+.contact-section {
+  background: var(--cream);
+  padding: 100px 56px 120px;
+}
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  max-width: 1060px;
+}
+
+.contact-left h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(32px, 4vw, 50px);
+  color: var(--ink);
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.contact-left p {
+  font-size: 16px;
+  color: var(--body);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.detail-icon {
+  width: 40px; height: 40px;
+  border-radius: 11px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: var(--card-shadow);
+}
+
+.detail-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.detail-val {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.contact-form {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 44px;
+  box-shadow: var(--card-shadow);
+}
+
+.form-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.form-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group { margin-bottom: 14px; }
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--paper);
+  border: 1.5px solid var(--sand);
+  border-radius: 10px;
+  padding: 13px 15px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); font-weight: 400; }
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0,201,167,0.1);
+  background: var(--white);
+}
+
+.form-group select option { background: var(--white); }
+.form-group textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
+
+.form-note { font-size: 12px; color: var(--muted); margin-bottom: 18px; font-style: italic; }
+
+.btn-submit {
+  width: 100%;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 11px;
+  padding: 16px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(13,27,42,0.18);
+}
+
+.btn-submit:hover {
+  background: var(--navy2);
+  box-shadow: 0 8px 28px rgba(13,27,42,0.26);
+  transform: translateY(-1px);
+}
+
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.form-success { display: none; text-align: center; padding: 36px 20px; }
+
+.success-icon {
+  width: 64px; height: 64px;
+  background: rgba(0,201,167,0.1);
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  margin: 0 auto 20px;
+}
+
+.form-success h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.form-success p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--navy);
+  padding: 36px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo .fmark {
+  width: 30px; height: 30px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--teal);
+}
+
+.footer-logo span { font-weight: 700; font-size: 15px; color: rgba(255,255,255,0.6); }
+.footer-legal { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up-d1 { transition-delay: 0.08s; }
+.fade-up-d2 { transition-delay: 0.16s; }
+.fade-up-d3 { transition-delay: 0.24s; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 960px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 110px 24px 72px; min-height: auto; }
+  .hero::before, .hero::after { display: none; }
+  section { padding: 72px 24px; }
+  .contact-section { padding: 72px 24px 96px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .offer-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
+  .stack-row { grid-template-columns: 1fr 1fr; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+  footer { padding: 28px 24px; flex-direction: column; gap: 10px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-mark">A</div>
+    <span class="nav-name">AdMint Studio</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#work">Sample Work</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Pilot</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-pill">
+      <div class="hero-pill-dot">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#0d1b2a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      AI Ad Creative for DTC
+    </div>
+    <h1>Ad creative<br>that <em>converts.</em><br>Every month.</h1>
+    <p class="hero-sub">AdMint Studio produces UGC-style video ads and static creatives for direct-to-consumer brands. Faster than a creator. Cheaper than an agency.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-dark">Start with a $500 Pilot</a>
+      <a href="#how" class="btn-outline">See how it works &rarr;</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card accent-navy">
+      <div class="hc-icon bg-navy">🎬</div>
+      <div>
+        <div class="hc-label">Monthly Output</div>
+        <div class="hc-val">8&ndash;12</div>
+        <div class="hc-sub">ad creatives per month</div>
+      </div>
+    </div>
+    <div class="hero-card accent-lemon">
+      <div class="hc-icon bg-warm">⚡</div>
+      <div>
+        <div class="hc-label">Pilot Turnaround</div>
+        <div class="hc-val">7 days</div>
+        <div class="hc-sub">from brief to delivery</div>
+      </div>
+    </div>
+    <div class="hero-card accent-lav">
+      <div class="hc-icon bg-warm">💳</div>
+      <div>
+        <div class="hc-label">Start For</div>
+        <div class="hc-val">$500</div>
+        <div class="hc-sub">no contract, no commitment</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-icon bg-teal">📦</div>
+      <div>
+        <div class="hc-label">Formats</div>
+        <div class="hc-val">9:16 / 1:1</div>
+        <div class="hc-sub">TikTok, Reels, Meta feed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="tag fade-up">How It Works</div>
+  <h2 class="section-title fade-up">Brief to delivery<br>in days, not weeks.</h2>
+  <p class="section-sub fade-up">No creative team to manage. No waiting on UGC creators. Just a clean intake and fast turnaround.</p>
+  <div class="steps">
+    <div class="step-card fade-up">
+      <div class="step-num">01</div>
+      <h3>Brief</h3>
+      <p>Share your brand, product, and target audience. One intake form, 15 minutes.</p>
+    </div>
+    <div class="step-card fade-up fade-up-d1">
+      <div class="step-num">02</div>
+      <h3>Script and Strategy</h3>
+      <p>We write hooks, scripts, and copy for every ad using proven DTC frameworks.</p>
+    </div>
+    <div class="step-card fade-up fade-up-d2">
+      <div class="step-num">03</div>
+      <h3>Production</h3>
+      <p>AI avatars, voiceover, captions, and motion. UGC-style video and static built for performance.</p>
+    </div>
+    <div class="step-card fade-up fade-up-d3">
+      <div class="step-num">04</div>
+      <h3>Delivery</h3>
+      <p>Final files delivered clean and ready to upload directly to your ad account.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="offer-section" id="offer">
+  <div class="tag fade-up">What You Get</div>
+  <h2 class="section-title fade-up">Everything your paid social<br>needs to keep testing.</h2>
+  <p class="section-sub fade-up">Brands that win on Meta and TikTok rotate fresh creative constantly. That is what we build for you.</p>
+  <div class="offer-grid">
+    <div class="offer-card dark fade-up">
+      <div class="offer-icon-wrap">🎥</div>
+      <h3>UGC-Style Video Ads</h3>
+      <p>AI avatar talking-head ads with scripted hooks, natural voiceover, captions, and CTA cards. Formatted at 9:16 for TikTok, Reels, and Meta. Indistinguishable from creator content.</p>
+    </div>
+    <div class="offer-card fade-up fade-up-d1">
+      <div class="offer-icon-wrap">🖼️</div>
+      <h3>Static Creatives</h3>
+      <p>Product-focused static ads and carousel frames for Meta. Headline testing, social proof, and offer framing in every set.</p>
+    </div>
+    <div class="offer-card fade-up fade-up-d2">
+      <div class="offer-icon-wrap">🔄</div>
+      <h3>Monthly Cadence</h3>
+      <p>On retainer, fresh creatives every month. No scrambling for content. New inventory ready to test each cycle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE WORK -->
+<section class="concepts-section" id="work" style="background:var(--white); padding: 80px 56px;">
+  <div class="tag fade-up">Sample Work</div>
+  <h2 class="section-title fade-up">Samples available upon request.</h2>
+  <p class="section-sub fade-up" style="max-width:560px;">We produce UGC-style video ads and static creatives across health, beauty, pet, and fitness verticals. Reach out and we will send examples relevant to your brand and category.</p>
+  <a href="mailto:AdMintStudio@gmail.com" style="display:inline-block; background:var(--navy); color:white; padding: 14px 28px; border-radius:10px; font-weight:700; font-size:14px; text-decoration:none; transition: all 0.2s;" onmouseover="this.style.background='#162636'" onmouseout="this.style.background='var(--navy)'">Request Samples &rarr;</a>
+  <p style="margin-top:16px; font-size:13px; color:var(--muted);">AdMintStudio@gmail.com</p>
+</section>
+
+<!-- STACK -->
+<section class="stack-section">
+  <div class="tag fade-up">Production Stack</div>
+  <h2 class="section-title fade-up">Purpose-built AI tools.<br>Not stock. Not freelancers.</h2>
+  <p class="section-sub fade-up">Every ad produced with tools built specifically for performance creative at scale.</p>
+  <div class="stack-row">
+    <div class="stack-card fade-up">
+      <div class="stack-cat">Video</div>
+      <div class="stack-item"><div class="stack-dot"></div>Arcads.ai</div>
+      <div class="stack-item"><div class="stack-dot"></div>ElevenLabs</div>
+      <div class="stack-item"><div class="stack-dot"></div>CapCut</div>
+    </div>
+    <div class="stack-card fade-up fade-up-d1">
+      <div class="stack-cat">Static</div>
+      <div class="stack-item"><div class="stack-dot"></div>Canva Pro</div>
+      <div class="stack-item"><div class="stack-dot"></div>Claude Pro</div>
+    </div>
+    <div class="stack-card fade-up fade-up-d2">
+      <div class="stack-cat">Formats Delivered</div>
+      <div class="stack-item"><div class="stack-dot"></div>9:16 TikTok / Reels</div>
+      <div class="stack-item"><div class="stack-dot"></div>1:1 Feed</div>
+      <div class="stack-item"><div class="stack-dot"></div>4:5 Meta</div>
+    </div>
+    <div class="stack-card fade-up fade-up-d3">
+      <div class="stack-cat">What You Receive</div>
+      <div class="stack-item"><div class="stack-dot"></div>MP4 video files</div>
+      <div class="stack-item"><div class="stack-dot"></div>PNG static files</div>
+      <div class="stack-item"><div class="stack-dot"></div>Ready to upload</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="tag fade-up">Pricing</div>
+  <h2 class="section-title fade-up">No contracts. No minimums.<br>Start with a pilot.</h2>
+  <p class="section-sub fade-up">Try it before you commit. The pilot converts to a retainer only if you want it to.</p>
+  <div class="pricing-grid">
+    <div class="price-card fade-up">
+      <div class="price-eyebrow">Pilot</div>
+      <div class="price-num">$500</div>
+      <div class="price-period">one time &middot; no commitment</div>
+      <div class="price-divider"></div>
+      <ul class="price-list">
+        <li><span class="check">&#10003;</span>3-4 ad creatives</li>
+        <li><span class="check">&#10003;</span>7-day delivery</li>
+        <li><span class="check">&#10003;</span>UGC video and static</li>
+        <li><span class="check">&#10003;</span>MP4 and PNG files delivered</li>
+      </ul>
+      <a href="#contact" class="btn-price-dark">Get Started</a>
+    </div>
+    <div class="price-card dark fade-up fade-up-d1">
+      <div class="price-eyebrow">Monthly Retainer</div>
+      <div class="price-num">$2,500</div>
+      <div class="price-period">per month &middot; cancel anytime</div>
+      <div class="price-divider"></div>
+      <ul class="price-list">
+        <li><span class="check">&#10003;</span>8-12 ad creatives per month</li>
+        <li><span class="check">&#10003;</span>UGC video and static formats</li>
+        <li><span class="check">&#10003;</span>New scripts every cycle</li>
+        <li><span class="check">&#10003;</span>Priority turnaround</li>
+        <li><span class="check">&#10003;</span>MP4 and PNG files delivered</li>
+      </ul>
+      <a href="#contact" class="btn-price-teal">Start with a Pilot</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-wrap">
+    <div class="contact-left fade-up">
+      <div class="tag">Get In Touch</div>
+      <h2>Let's build your next batch of creatives.</h2>
+      <p>Fill out the form and we will be in touch within 24 hours. If you are ready to move fast, mention it and we will prioritize your pilot.</p>
+      <div class="detail-item">
+        <div class="detail-icon">⚡</div>
+        <div>
+          <div class="detail-label">Turnaround</div>
+          <div class="detail-val">Pilot delivered in 7 days</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">💳</div>
+        <div>
+          <div class="detail-label">Payment</div>
+          <div class="detail-val">Stripe invoice sent on kickoff</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">📬</div>
+        <div>
+          <div class="detail-label">Response Time</div>
+          <div class="detail-val">Within 24 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form fade-up fade-up-d1">
+      <div class="form-title">Request a Pilot</div>
+      <div class="form-sub">3-4 ads. 7-day delivery. $500 flat.</div>
+      <div id="form-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="f-first" placeholder="Alex">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="f-last" placeholder="Chen">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Work Email</label>
+          <input type="email" id="f-email" placeholder="alex@yourbrand.com">
+        </div>
+        <div class="form-group">
+          <label>Brand Name</label>
+          <input type="text" id="f-brand" placeholder="Your brand">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="f-cat">
+            <option value="" disabled selected>Select a category</option>
+            <option>Health and Wellness</option>
+            <option>Skincare and Beauty</option>
+            <option>Pet Products</option>
+            <option>Fitness</option>
+            <option>Food and Beverage</option>
+            <option>Home Goods</option>
+            <option>Other DTC</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell us about your current ads (optional)</label>
+          <textarea id="f-note" placeholder="What are you running now? What is not working? What angles do you want to test?"></textarea>
+        </div>
+        <p class="form-note">No contracts, no minimums. Pilot converts to retainer only if you want it to.</p>
+        <button class="btn-submit" onclick="submitForm()">Request My Pilot &rarr;</button>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="success-icon">&#10003;</div>
+        <h3>We got it.</h3>
+        <p>Expect a reply within 24 hours. We will confirm your pilot details and send a Stripe invoice to kick things off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="fmark">A</div>
+    <span>AdMint Studio</span>
+  </div>
+  <div class="footer-legal">AI Ad Creative for DTC Brands &copy; 2025 AdMint Studio</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+function submitForm() {
+  const first = document.getElementById('f-first').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const brand = document.getElementById('f-brand').value.trim();
+  if (!first || !email || !brand) { alert('Please fill in your name, email, and brand name.'); return; }
+  const btn = document.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  setTimeout(() => {
+    document.getElementById('form-body').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }, 700);
+}
+</script>
+</body>
+</html>
